@@ -71,10 +71,12 @@ class ProductsController < ApplicationController
       #landscape_cards_stacked_in_cell = 0
       #landscape_prods = []
       #portrait_prods = []
+      width = 0
+      height = 0
       
       products.each do |product|
         photo = product.photos.first || product.photos.build
-        width, height = FastImage.size(photo.image.path(:medium))
+        width, height = FastImage.size(photo.image.url(:medium))
         if width > height # First/cover image is landscape oriented
           # Push Landscape card into arranged_cards array
           arranged_cards << {:product => product, :photo => photo, :orientation => 'landscape'}
@@ -84,7 +86,7 @@ class ProductsController < ApplicationController
         end
       end
 
-      return arranged_cards
+      return arranged_cards 
     end
 
     # Use callbacks to share common setup or constraints between actions.

@@ -3,4 +3,4 @@ app_secret: <%= ENV["DROPBOX_APP_SECRET"] %>
 access_token: "v82s4oupr0gssoq1"
 access_token_secret: <%= ENV["DROPBOX_ACCESS_TOKEN_SECRET"] %>
 user_id: "664830"
-access_type: "dropbox|app_folder"
+access_type: "app_folder"
