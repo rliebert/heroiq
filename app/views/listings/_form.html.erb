@@ -1,0 +1,60 @@
+<%= nested_form_for @listing do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :photos %><br>
+    <div class="indented">
+      <%= f.fields_for :photos do |photo_form| %>
+        <%= photo_form.file_field :image %>
+        Caption: <%= photo_form.text_area :caption %><br>
+        <%= photo_form.link_to_remove "Remove this photo" %><br><br>
+      <% end %>
+    </div>
+    <p><%= f.link_to_add "Add a photo", :photos %></p>
+  </div>
+  <div class="form-group">
+    <%= f.label :mfr_date, 'Mfr. Year' %><br>
+    <%= f.date_select :mfr_date, :discard_month => true, :start_year => Date.today.year, :end_year => 1850, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :serial_no, 'Serial No.' %><br>
+    <%= f.text_field :serial_no, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :rental_price_per_day, "Rent/day" %><br>
+    <%= f.text_field :rental_price_per_day, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :rental_price_per_wk, "Rent/wk" %><br>
+    <%= f.text_field :rental_price_per_wk, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :security_deposit %><br>
+    <%= f.text_field :security_deposit, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sale_price %><br>
+    <%= f.text_field :sale_price, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :accept_offers %><br>
+    <%= f.check_box :accept_offers, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

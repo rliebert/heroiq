@@ -1,0 +1,93 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	background-color: #000;
+//	background-image: image-url('15.jpg');
+	color: #30383a;  /* Pantone PMS 433 (ref: http://simple.be/web/color/codes) */
+}
+
+.navbar {
+	height: 72px;
+	padding: 5px 255px;
+	margin-bottom: 0;
+	border-radius: 0;
+	vertical-align: baseline;
+}
+
+.navbar-default {
+	background-color:rgba (255,255,255,0.7);
+	border: none;
+}
+
+.navbar-default .navbar-brand {
+	font-weight: 400;
+	color: #0084c9; /* Pantone PMS 3005 (ref: http://simple.be/web/color/codes) */
+	font-size: 30px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #0084c9;
+}
+
+.center {
+	text-align: center;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+}
+@for $i from 1 through 16 {
+  .jt-#{$i} {  	
+  	background-color: #000;
+  	background: image-url('guitar-image-#{$i}.jpg');
+  	height: 600px;
+	background-position: center center;
+  }
+}
+.left-biased-image {
+	float: right;
+}
+
+.intro-area {
+	height: 500px;
+	width: auto;
+
+	h1 {
+		background-color:rgba(0,0,0,0.5);
+		color:#fff;
+		border-radius: 10px;
+	}
+}
+
+.content-wrapper {
+	background-color: #fff;
+}
+
+.fields {
+	padding-left: 20px;
+}
+
+
+.card-portrait { height: 600px; }
+.card-landscape { height: 300px; }
+
+
+
+.footer {
+	background-image: image-url('15.jpg');
+	width: 100%;
+}
+
+
+.copyright {
+	background-color: #2a2a2a;
+	color: #777;
+	width: 100%;
+}
+
+

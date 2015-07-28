@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+	<% if @photo.listing_id? %>
+		<h2>Photo of <strong>"<%= @photo.listing.name %>"</strong> (<%= @photo.listing.product.brand_name %> <%= @photo.listing.product.prod_name %>):</h2>
+	<% elsif %>
+		<h2>Photo of <strong><%= @photo.product.brand_name %> <%= @photo.product.prod_name %></strong>:</h2>
+	<% end %>
+	<p>
+	  <%= image_tag @photo.image.url(:large), alt: @photo.caption %>
+	</p>
+
+	<p>
+	  <strong><%= @photo.caption %></strong>
+	</p>
+
+	<% if @photo.product_id? %>
+		<%= link_to 'Edit', edit_photo_path %> |
+		<%= link_to 'Back', product_path(@photo.product_id) %>
+	<% elsif @photo.listing_id? %>
+		<%= link_to 'Edit', edit_photo_path %>
+		<%= link_to 'Back', listing_path(@photo.listing_id) %>
+	<% end %>
+</div>

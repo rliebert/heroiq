@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @product.brand_name + " " + @product.prod_name %></h1>
+
+<p>
+  <strong>Images:</strong><br>
+    <% @product.photos.each_with_index do |pp, num| %>
+      <%= link_to image_tag(pp.image.url(:medium), 	alt: "Image #{num}"), photo_path(pp) %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @product.prod_type %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @product.brand_name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @product.prod_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>
+    <%= link_to 'See Listings ('+@product.listings.count.to_s+')', product_listings_path(@product) %>
+  </strong>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

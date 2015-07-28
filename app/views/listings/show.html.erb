@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>"<%= @listing.name %>"</h1>
+<h3>
+  <strong><%= @listing.mfr_date.year.to_s + " " %>
+  <%= link_to @listing.product.brand_name + " " + @listing.product.prod_name, @listing.product %></strong>
+</h3>
+
+<p>
+  <strong>Images:</strong><br>
+    <% @listing.photos.each_with_index do |lp, num| %>
+      <%= link_to image_tag(lp.image.url(:medium),  alt: "Image #{num}"), photo_path(lp) %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Serial no:</strong>
+  <%= @listing.serial_no %>
+</p>
+
+<p>
+  <strong>Rental price per day:</strong>
+  <%= number_to_currency(@listing.rental_price_per_day) %>
+</p>
+
+<p>
+  <strong>Rental price per wk:</strong>
+  <%= number_to_currency(@listing.rental_price_per_wk) %>
+</p>
+
+<p>
+  <strong>Security deposit:</strong>
+  <%= number_to_currency(@listing.security_deposit) %>
+</p>
+
+<p>
+  <strong>Sale price:</strong>
+  <%= number_to_currency(@listing.sale_price) %>
+</p>
+
+<p>
+  <strong>Accept offers:</strong>
+  <%= @listing.accept_offers %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
+<%= link_to 'Back', listings_path, class: "btn btn-link" %>

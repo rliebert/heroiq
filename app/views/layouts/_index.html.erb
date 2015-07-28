@@ -1,0 +1,18 @@
+<%= content_tag :div, class: ['jumbotron', 'jt-'+@imagenum.to_s] do %>
+	<div class="container">
+		<div class="intro-area">
+			<% if @left_biased_images.include?(@imagenum) %>
+				<h1 class="col-md-4 left-biased-image">
+			<% else %>
+				<h1 class="col-md-4">
+			<% end %>
+					Local Guitars on Demand  <%# <------- Main tagline %>
+				</h1>
+		</div>
+	</div>
+<% end %>
+<div class="content-wrapper">
+	<div class="container">
+		<%= yield %> <%# <----- Rest of HTML content defined in '/pages/index.html' %>
+	</div>
+</div> 

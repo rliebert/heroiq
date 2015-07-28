@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <% if @listings.empty? %>
+    No Listings Found
+  <% else %>
+    Listings
+  <% end %>
+  <% if @product %>
+    <%= "for " + @product.brand_name + " " + @product.prod_name + ":" %>
+  <% end %>
+</h1>
+
+<div class="row">
+  <% @listings.each do |listing| %>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <% photo = listing.photos.first || listing.photos.build %>
+        <%= link_to image_tag(photo.image.url(:medium), alt: photo.caption), listing_path(listing) %><br>
+        <div class="caption">
+          <% name = listing.name != "" ? listing.name : "No name" %>
+          <h3><%= name %></h3>
+          <p>
+            Mfr. date:        <%= listing.mfr_date %><br>
+            Serial no.:       <%= listing.serial_no %><br>
+            Price/day:        <%= listing.rental_price_per_day %><br>
+            Price/wk:         <%= listing.rental_price_per_wk %><br>
+            Security deposit: <%= listing.security_deposit %><br>
+            For sale?
+              <% if listing.accept_offers %>
+                Yes
+                <% if listing.sale_price %>
+                  (<%= listing.sale_price %>)
+                <% else %>
+                  (no price set)
+                <% end %>
+              <% else %>
+                No
+              <% end %>
+          </p>
+        </div>
+
+        <%= link_to 'Show', listing, class: "btn btn-link" %><br>
+        <%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %><br>
+        <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+
+

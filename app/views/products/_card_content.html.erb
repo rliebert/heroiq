@@ -1,0 +1,23 @@
+
+<% if orientation == 'landscape' %>
+  <div class="col-md-12">
+<% elsif orientation == 'portrait' %>
+  <div class="col-md-6">
+<% end %>
+    <%= link_to image_tag(photo.image.url(:medium), alt: photo.caption), product_path(product) %>
+  </div>
+
+<% if orientation == 'landscape' %>
+  <div class="col-md-12">
+<% elsif orientation == 'portrait' %>
+  <div class="col-md-6">
+<% end %>
+    <div class="caption">
+      <h3><%= link_to product.brand_name + " " + product.prod_name, product %></h3>
+      <p>Type: <%= product.prod_type %></p><br>
+      <%#= link_to 'About', product, class: "btn btn-link" %><!--<br>-->
+      <%= link_to 'Listings ('+product.listings.count.to_s+')', product_listings_path(product), class: "btn btn-link" %><br>
+      <%= link_to 'Edit', edit_product_path(product), class: "btn btn-link" %><br>
+      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+    </div>
+  </div>

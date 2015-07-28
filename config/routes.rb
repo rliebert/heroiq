@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  
+  resources :photos
+
+  resources :listings do
+    resources :photos, :shallow => true
+  end
+
+  resources :products do
+    resources :listings
+    resources :photos, :shallow => true
+  end
+
+  get 'pages/about'
+  get 'pages/contact'
+
+  root 'pages#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<div class="row">
+  <% @arranged_cards.each do |card| %>
+      <div class="col-md-3">
+        <div class="thumbnail row">
+            <%= render 'products/card_content', :product => card[:product], :photo => card[:photo], :orientation => card[:orientation] %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+

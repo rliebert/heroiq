@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  images: MyText
+  mfr_date: 2015-06-11
+  serial_no: MyString
+  rental_price_per_day: 9.99
+  rental_price_per_wk: 9.99
+  security_deposit_amt: 9.99
+  sale_price: 9.99
+  accept_offers: false
+
+two:
+  name: MyString
+  images: MyText
+  mfr_date: 2015-06-11
+  serial_no: MyString
+  rental_price_per_day: 9.99
+  rental_price_per_wk: 9.99
+  security_deposit_amt: 9.99
+  sale_price: 9.99
+  accept_offers: false
