@@ -9,7 +9,9 @@ class Photo < ActiveRecord::Base
 			:medium => "400x400>",
 			:large => "800x800>"
 			},
-		:default_url => "no-image_:style.png"
+		:default_url => "no-image_:style.png",
+		:storage => :dropbox,
+    	:dropbox_credentials => Rails.root.join("config/dropbox.yml")
 
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
