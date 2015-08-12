@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
       
       products.each do |product|
         photo = product.photos.first || product.photos.build
-        width, height = FastImage.size(photo.image.url(:medium))
+        width, height = FastImage.size(photo.image.url(:medium)) || FastImage.size(photo.image.path(:medium))
         if width > height # First/cover image is landscape oriented
           # Push Landscape card into arranged_cards array
           arranged_cards << {:product => product, :photo => photo, :orientation => 'landscape'}
