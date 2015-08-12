@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy] # "check_user is a custom method defined below"
 
   # GET /listings
   # GET /listings.json
@@ -87,4 +89,13 @@ class ListingsController < ApplicationController
                                       :rental_price_per_wk, :security_deposit, :sale_price, :accept_offers,
                                       photos_attributes: [:id, :image, :caption, :_destroy])
     end
+
+    # Check if current user is the listing owner before they're allowed to edit/update/destroy
+    # (used in "before_filter" line at top of this file)
+    def check_user
+      if current_user != @listing.owner
+        redirect_to listings_url, alert: "Sorry, this listing belongs to someone else"
+      end
+    end
+
 end
