@@ -40,15 +40,27 @@ body {
 
 .jumbotron {
 	margin-bottom: 0;
-}
-@for $i from 1 through 16 {
-  .jt-#{$i} {  	
-  	background-color: #000;
-  	background: image-url('guitar-image-#{$i}.jpg');
-  	height: 600px;
+	background-color: #000;
 	background-position: center center;
-  }
+	height: 600px;
 }
+.jt-1 { background-image: url('https://dl.dropboxusercontent.com/s/35wqsitozz8xikf/guitar-image-1.jpg?dl=0'); }
+.jt-2 { background-image: url('https://dl.dropboxusercontent.com/s/3gv1ki6bavp4waa/guitar-image-2.jpg?dl=0'); }
+.jt-3 { background-image: url('https://dl.dropboxusercontent.com/s/cgdmmkrb8kg9maq/guitar-image-3.jpg?dl=0'); }
+.jt-4 { background-image: url('https://dl.dropboxusercontent.com/s/rbzdb0kz09jfpjq/guitar-image-4.jpg?dl=0'); }
+.jt-5 { background-image: url('https://dl.dropboxusercontent.com/s/r600bl3dtpzep6s/guitar-image-5.jpg?dl=0'); }
+.jt-6 { background-image: url('https://dl.dropboxusercontent.com/s/fsrpuuvmqbq19a2/guitar-image-6.jpg?dl=0'); }
+.jt-7 { background-image: url('https://dl.dropboxusercontent.com/s/p8g58uirwvu3gpi/guitar-image-7.jpg?dl=0'); }
+.jt-8 { background-image: url('https://dl.dropboxusercontent.com/s/7scvmyu1ezbh7jf/guitar-image-8.jpg?dl=0'); }
+.jt-9 { background-image: url('https://dl.dropboxusercontent.com/s/i512t9ya6ix3z5x/guitar-image-9.jpg?dl=0'); }
+.jt-10 { background-image: url('https://dl.dropboxusercontent.com/s/96puz7vaqbqlk6r/guitar-image-10.jpg?dl=0'); }
+.jt-11 { background-image: url('https://dl.dropboxusercontent.com/s/ozq1z98vuqkk0t4/guitar-image-11.jpg?dl=0'); }
+.jt-12 { background-image: url('https://dl.dropboxusercontent.com/s/u2dcbj2yaxn32xl/guitar-image-12.jpg?dl=0'); }
+.jt-13 { background-image: url('https://dl.dropboxusercontent.com/s/a32aj8yses4c5ts/guitar-image-13.jpg?dl=0'); }
+.jt-14 { background-image: url('https://dl.dropboxusercontent.com/s/kpjlgm2o7nkvphd/guitar-image-14.jpg?dl=0'); }
+.jt-15 { background-image: url('https://dl.dropboxusercontent.com/s/hfm24au0wvlcrij/guitar-image-15.jpg?dl=0'); }
+.jt-16 { background-image: url('https://dl.dropboxusercontent.com/s/cw1ptp7s4b8glvu/guitar-image-16.jpg?dl=0'); }
+
 .left-biased-image {
 	float: right;
 }
