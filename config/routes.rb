@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'pages/about'
   get 'pages/contact'
+  get 'owner' => "listings#owner"
 
   root 'pages#index'
 

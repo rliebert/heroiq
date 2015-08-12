@@ -1,7 +1,11 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:owner, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy] # "check_user is a custom method defined below"
+
+  def owner
+    @listings = Listing.where(owner: current_user).order("created_at DESC")
+  end
 
   # GET /listings
   # GET /listings.json
@@ -10,7 +14,7 @@ class ListingsController < ApplicationController
       @product = Product.find(params[:product_id])
       @listings = @product.listings
     else
-      @listings = Listing.all
+      @listings = Listing.all.order("created_at DESC")
     end
   end
 

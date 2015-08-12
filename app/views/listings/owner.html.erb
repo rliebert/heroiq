@@ -2,12 +2,10 @@
 
 <h1>
   <% if @listings.empty? %>
-    No Listings Found
+    Looks like you haven't posted any instruments yet.
+    <%= link_to 'Create a listing now.', new_listing_path, "btn btn-link" %>
   <% else %>
-    Listings
-  <% end %>
-  <% if @product %>
-    <%= "for " + @product.brand_name + " " + @product.prod_name + ":" %>
+    Your Gear
   <% end %>
 </h1>
 
@@ -56,5 +54,3 @@
 <% if user_signed_in? %>
   <%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
 <% end %>
-
-
