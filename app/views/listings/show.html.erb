@@ -3,7 +3,9 @@
 <h1>"<%= @listing.name %>"</h1>
 <h3>
   <strong><%= @listing.mfr_date.year.to_s + " " %>
-  <%= link_to @listing.product.brand_name + " " + @listing.product.prod_name, @listing.product %></strong>
+  <% if @listing.product %>
+    <%= link_to @listing.product.brand_name + " " + @listing.product.prod_name, @listing.product %></strong>
+  <% end %>
 </h3>
 
 <p>

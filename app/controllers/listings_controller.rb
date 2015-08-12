@@ -36,6 +36,8 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+    @listing.owner_id = current_user.id
+
     #@listing_images_array = @listing.images.split(/,\s*/)
 
     respond_to do |format|
@@ -81,7 +83,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :mfr_date, :serial_no, :rental_price_per_day,
+      params.require(:listing).permit(:name, :description, :mfr_date, :serial_no, :rental_price_per_day,
                                       :rental_price_per_wk, :security_deposit, :sale_price, :accept_offers,
                                       photos_attributes: [:id, :image, :caption, :_destroy])
     end

@@ -27,6 +27,10 @@
     </div>
     <p><%= f.link_to_add "Add a photo", :photos %></p>
   </div>
+    <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.label :mfr_date, 'Mfr. Year' %><br>
     <%= f.date_select :mfr_date, :discard_month => true, :start_year => Date.today.year, :end_year => 1850, class: "form-control" %>
@@ -51,9 +55,11 @@
     <%= f.label :sale_price %><br>
     <%= f.text_field :sale_price, class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.label :accept_offers %><br>
-    <%= f.check_box :accept_offers, class: "form-control" %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :accept_offers %>
+      Allow offers to buy this item
+    </label>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>

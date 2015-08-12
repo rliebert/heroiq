@@ -18,8 +18,10 @@
         <% photo = listing.photos.first || listing.photos.build %>
         <%= link_to image_tag(photo.image.url(:medium), alt: photo.caption), listing_path(listing) %><br>
         <div class="caption">
-          <% name = listing.name != "" ? listing.name : "No name" %>
-          <h3><%= name %></h3>
+          <% listing_name = listing.name != "" ? listing.name : "No name" %>
+          <h3><%= listing_name %></h3>
+          <% owner_name = listing.owner != nil ? listing.owner.name : "UNKNOWN OWNER" %>
+          <p><%= "Listed by #{owner_name}"%></p>
           <p>
             Mfr. date:        <%= listing.mfr_date %><br>
             Serial no.:       <%= listing.serial_no %><br>

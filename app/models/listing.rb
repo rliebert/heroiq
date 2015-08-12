@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
 
 	belongs_to :product
+	belongs_to :owner, class_name: "User"
 
 	has_many :photos, :foreign_key => "listing_id", :dependent => :destroy
 
