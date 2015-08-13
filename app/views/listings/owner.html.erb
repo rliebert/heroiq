@@ -3,7 +3,7 @@
 <h1>
   <% if @listings.empty? %>
     Looks like you haven't posted any instruments yet.
-    <%= link_to 'Create a listing now.', new_listing_path, "btn btn-link" %>
+    <%= link_to 'Create a listing now.', new_listing_path, class: "btn btn-link" %>
   <% else %>
     My Gear:
   <% end %>
@@ -22,7 +22,7 @@
     <tr>
       <td>
         <% if listing.photos.first %>
-          <%= image_tag listing.photos.first.image.path(:thumb) %>
+          <%= link_to (image_tag listing.photos.first.image.url(:thumb) || listing.photos.first.image.path(:thumb)), listing_path(listing) %>
         <% else %>
           <%= image_tag "no-image_thumb.png" %>
         <% end %>
