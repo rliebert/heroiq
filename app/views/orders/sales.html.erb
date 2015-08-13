@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+  <h2>
+    <% if @orders.empty? %>
+      Looks like no one's borrowed or bought from you yet.
+    <% else %>
+      My Gear's Sales History:
+    <% end %>
+  </h2>
+</div>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th class="center">Image</th>
+    <th class="center">Name</th>
+    <th class="center">Description</th>
+    <th class="center">Daily Rental Price</th>
+    <th class="center">Customer</th>
+    <th class="center">Transaction Date</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td class="center">
+        <% if order.listing.photos.first %>
+          <%= image_tag order.listing.photos.first.image.url(:thumb) || order.listing.photos.first.image.path(:thumb) %>
+        <% else %>
+          <%= image_tag "no-image_thumb.png" %>
+        <% end %>
+      </td>
+      <td class="center"><%= order.listing.name %></td>
+      <td class="center"><%= order.listing.description %></td>
+      <td class="center"><%= number_to_currency(order.listing.rental_price_per_day) %></td>
+      <td class="center"><%= order.buyer.name %></td>
+      <td class="center"><%= order.created_at.strftime("%B %-d, %Y") %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: { no_turbo_link: true } %>
+<% end %>
