@@ -5,6 +5,8 @@ class Listing < ActiveRecord::Base
 
 	has_many :photos, :foreign_key => "listing_id", :dependent => :destroy
 
+	has_many :orders
+
 	accepts_nested_attributes_for :photos, :allow_destroy => true
 
 	validates :name, :description, presence: true

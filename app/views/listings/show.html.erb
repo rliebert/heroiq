@@ -13,40 +13,14 @@
     <% end %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Serial no:</strong>
-  <%= @listing.serial_no %>
-</p>
-
-<p>
-  <strong>Rental price per day:</strong>
-  <%= number_to_currency(@listing.rental_price_per_day) %>
-</p>
-
-<p>
-  <strong>Rental price per wk:</strong>
-  <%= number_to_currency(@listing.rental_price_per_wk) %>
-</p>
-
-<p>
-  <strong>Security deposit:</strong>
-  <%= number_to_currency(@listing.security_deposit) %>
-</p>
-
-<p>
-  <strong>Sale price:</strong>
-  <%= number_to_currency(@listing.sale_price) %>
-</p>
-
-<p>
-  <strong>Accept offers:</strong>
-  <%= @listing.accept_offers %>
-</p>
+<p><strong>Description:</strong><%= @listing.description %></p>
+<br /><div class="center"><%= link_to "Order Now", new_listing_order_path(@listing), class: "btn btn-primary" %></div>
+<p><strong>Serial no:</strong><%= @listing.serial_no %></p>
+<p><strong>Rental price per day:</strong><%= number_to_currency(@listing.rental_price_per_day) %></p>
+<p><strong>Rental price per wk:</strong><%= number_to_currency(@listing.rental_price_per_wk) %></p>
+<p><strong>Security deposit:</strong><%= number_to_currency(@listing.security_deposit) %></p>
+<p><strong>Sale price:</strong><%= number_to_currency(@listing.sale_price) %></p>
+<p><strong>Accept offers:</strong><%= @listing.accept_offers %></p>
 
 <% if current_user == @listing.owner %>
   <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |

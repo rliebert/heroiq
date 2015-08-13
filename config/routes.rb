@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :orders
   devise_for :users
   resources :photos
 
   resources :listings do
     resources :photos, :shallow => true
+    resources :orders
   end
 
   resources :products do
