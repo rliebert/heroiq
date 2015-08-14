@@ -43,7 +43,31 @@ class OrdersController < ApplicationController
 
     @order.listing_id = @listing.id
     @order.buyer_id = current_user.id
-    @order.seller_id = @seller.id if @seller != nil  # Just to overcome error during development; remove the "if" for production and make sure each listing has an owner
+    @order.seller_id = @seller.id if @seller != nil  # Just to overcome error during development
+    # Remove the "if" above for production and make sure each listing has an owner
+
+    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    token = params[:stripeToken]
+
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@listing.rental_price_per_day * 100).floor,
+        :currency => "usd",
+        :source => token,
+        :description => "Test charge"
+        )
+      flash[:notice] = "Thanks for ordering!"
+    rescue Stripe::CardError => e
+      flash[:danger] = e.message
+    end
+
+    
+    #transfer = Stripe::Transfer.create(
+    #  :amount => (@listing.rental_price_per_day * 95).floor,
+    #  :currency => "usd",
+    #  :recipient => @seller.recipient,
+    #  :description => "Test transfer"
+    #  )
 
     respond_to do |format|
       if @order.save

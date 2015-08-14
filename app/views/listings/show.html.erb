@@ -14,7 +14,7 @@
 </p>
 
 <p><strong>Description:</strong><%= @listing.description %></p>
-<br /><div class="center"><%= link_to "Order Now", new_listing_order_path(@listing), class: "btn btn-primary" %></div>
+<br /><div class="center"><%= link_to "Order Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbo_link: true } %></div>
 <p><strong>Serial no:</strong><%= @listing.serial_no %></p>
 <p><strong>Rental price per day:</strong><%= number_to_currency(@listing.rental_price_per_day) %></p>
 <p><strong>Rental price per wk:</strong><%= number_to_currency(@listing.rental_price_per_wk) %></p>
