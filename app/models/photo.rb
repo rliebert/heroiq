@@ -9,6 +9,7 @@ class Photo < ActiveRecord::Base
 			:medium => "400x400>",
 			:large => "800x800>"
 			},
+		:path => ":style/:filename_:style",
 		:default_url => "no-image_:style.png",
 		:storage => :dropbox,
     	:dropbox_credentials => Rails.root.join("config/dropbox.yml")
